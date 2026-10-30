@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start AIoT Backend (FastAPI)",
+      "type": "shell",
+      "command": "python -m uvicorn main:app --reload --port 8000 --host 0.0.0.0",
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "group": "servers",
+        "panel": "new",
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Start AIoT Frontend (Vite React)",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "group": "servers",
+        "panel": "new",
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Run Complete Project (Both Servers)",
+      "dependsOn": [
+        "Start AIoT Backend (FastAPI)",
+        "Start AIoT Frontend (Vite React)"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
